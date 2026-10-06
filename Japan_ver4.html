@@ -1,0 +1,3084 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+  />
+
+
+  <title>京都・奈良・大阪｜7日旅行手冊</title>
+
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            muji: {
+              bg: '#F4F1EA',
+              paper: '#FAF9F6',
+              beige: '#E8E1D5',
+              brown: '#665C50',
+              dark: '#3F3A34',
+              green: '#7A8471',
+              red: '#A65D57',
+              blue: '#718A96',
+              yellow: '#B59A62'
+            }
+          },
+          fontFamily: {
+            sans: ['Noto Sans TC', 'sans-serif'],
+            maru: ['Zen Maru Gothic', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --paper: #faf9f6;
+      --beige: #e8e1d5;
+      --brown: #665c50;
+      --dark: #3f3a34;
+      --green: #7a8471;
+      --red: #a65d57;
+      --blue: #718a96;
+      --yellow: #b59a62;
+    }
+
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--dark);
+      font-family: "Noto Sans TC", sans-serif;
+      padding-bottom: 90px;
+    }
+
+
+    button,
+    input,
+    textarea {
+      font-family: inherit;
+    }
+
+
+    .paper {
+      background: var(--paper);
+    }
+
+
+    .muji-card {
+      background: var(--paper);
+      border: 1px solid rgba(102, 92, 80, 0.12);
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(63, 58, 52, 0.06);
+    }
+
+
+    .section-title {
+      font-family: "Zen Maru Gothic", sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+
+    .hidden-page {
+      display: none !important;
+    }
+
+
+    .timeline {
+      position: relative;
+      margin-left: 13px;
+      padding-left: 25px;
+    }
+
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 4px;
+      width: 1px;
+      background: #d8d0c3;
+    }
+
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+
+    .timeline-dot {
+      position: absolute;
+      left: -31px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--green);
+      border: 3px solid var(--paper);
+      box-shadow: 0 0 0 1px #cfc7ba;
+    }
+
+
+    .timeline-item.important .timeline-dot {
+      background: var(--red);
+      box-shadow: 0 0 0 3px rgba(166, 93, 87, 0.15);
+    }
+
+
+    .timeline-item.transport .timeline-dot {
+      background: var(--blue);
+    }
+
+
+    .timeline-time {
+      color: var(--brown);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+
+    .timeline-text {
+      margin-top: 3px;
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+
+    .important-card {
+      border-left: 4px solid var(--red);
+      background: #f8eeeb;
+    }
+
+
+    .transport-card {
+      background: #f1f5f5;
+    }
+
+
+    .nav-item {
+      color: #8c8378;
+      transition: all .2s ease;
+    }
+
+
+    .nav-item.active {
+      color: var(--dark);
+      font-weight: 700;
+    }
+
+
+    .nav-item.active .nav-icon {
+      transform: translateY(-2px);
+    }
+
+
+    .nav-icon {
+      transition: transform .2s ease;
+    }
+
+
+    .day-button {
+      min-width: 68px;
+      border: 1px solid #ddd5c9;
+      color: #7c746a;
+      background: #faf9f6;
+    }
+
+
+    .day-button.active {
+      background: var(--dark);
+      color: white;
+      border-color: var(--dark);
+    }
+
+
+    .modal-bg {
+      background: rgba(30, 28, 25, .48);
+      backdrop-filter: blur(4px);
+    }
+
+
+    .modal-box {
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 100px;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s;
+      z-index: 100;
+    }
+
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+
+    .photo-thumb {
+      width: 58px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid #ddd5c9;
+    }
+
+
+    .check-row input {
+      accent-color: var(--green);
+    }
+
+
+    .guide-content p {
+      line-height: 1.9;
+      font-size: 14px;
+      color: #5f584f;
+    }
+
+
+    .guide-content h4 {
+      font-family: "Zen Maru Gothic", sans-serif;
+      margin-top: 22px;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+
+    .map-frame {
+      width: 100%;
+      height: 260px;
+      border: 0;
+      border-radius: 16px;
+    }
+
+
+    @media (min-width: 768px) {
+      body {
+        max-width: 760px;
+        margin: 0 auto;
+        background: #ece8df;
+      }
+
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: #ece8df;
+      }
+
+
+      main {
+        background: var(--bg);
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+<header class="sticky top-0 z-40 bg-[#F4F1EA]/95 backdrop-blur border-b border-[#ded7cb]">
+  <div class="px-5 py-3 flex items-center justify-between">
+    <div>
+      <div class="text-[10px] tracking-[.25em] text-[#8c8378]">
+        KYOTO · NARA · OSAKA
+      </div>
+      <h1 class="font-maru text-lg font-bold">
+        7日旅行手冊
+      </h1>
+    </div>
+
+
+    <div class="text-right">
+      <div class="text-xs text-[#8c8378]">2026.10.17 — 10.23</div>
+      <div class="text-[10px] text-[#A65D57] mt-0.5">
+        GK50 ✈ GK55
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+<main class="min-h-screen">
+
+
+  <!-- =========================
+       PLAN
+  ========================= -->
+  <section id="page-plan" class="page px-4 pt-5">
+
+
+    <div class="mb-5">
+      <div class="text-xs tracking-[.2em] text-[#8c8378] mb-1">
+        TRAVEL PLAN
+      </div>
+      <h2 class="section-title text-2xl font-bold">
+        旅程
+      </h2>
+      <p class="text-sm text-[#80786e] mt-1">
+        京都 4 晚 · 大阪 2 晚 · 奈良 1 日
+      </p>
+    </div>
+
+
+    <!-- Flight / Hotel summary -->
+    <div class="grid grid-cols-2 gap-3 mb-5">
+
+
+      <div class="muji-card p-4">
+        <div class="text-[10px] tracking-widest text-[#91887d]">
+          FLIGHT
+        </div>
+        <div class="font-bold mt-1">
+          GK50 / GK55
+        </div>
+        <div class="text-xs text-[#817970] mt-1">
+          桃園 ⇄ 關西
+        </div>
+      </div>
+
+
+      <div class="muji-card p-4">
+        <div class="text-[10px] tracking-widest text-[#91887d]">
+          HOTEL
+        </div>
+        <div class="font-bold mt-1 text-sm">
+          京都站前里士滿
+        </div>
+        <div class="text-xs text-[#817970] mt-1">
+          → 大阪 integrate
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- Day selector -->
+    <div id="daySelector" class="flex gap-2 overflow-x-auto pb-3 mb-2"></div>
+
+
+    <!-- Day header -->
+    <div id="dayHeader" class="muji-card p-5 mb-4"></div>
+
+
+    <!-- Timeline -->
+    <div id="timeline" class="timeline"></div>
+
+
+  </section>
+
+
+
+
+  <!-- =========================
+       GUIDE
+  ========================= -->
+  <section id="page-guide" class="page hidden-page px-4 pt-5">
+
+
+    <div class="mb-5">
+      <div class="text-xs tracking-[.2em] text-[#8c8378] mb-1">
+        TRAVEL GUIDE
+      </div>
+      <h2 class="section-title text-2xl font-bold">
+        深度導覽
+      </h2>
+      <p class="text-sm text-[#80786e] mt-1">
+        不只走過，也稍微了解它們的故事。
+      </p>
+    </div>
+
+
+    <div id="guideList" class="space-y-4"></div>
+
+
+  </section>
+
+
+
+
+  <!-- =========================
+       WALLET
+  ========================= -->
+  <section id="page-wallet" class="page hidden-page px-4 pt-5">
+
+
+    <div class="mb-5">
+      <div class="text-xs tracking-[.2em] text-[#8c8378] mb-1">
+        TRAVEL WALLET
+      </div>
+      <h2 class="section-title text-2xl font-bold">
+        記帳
+      </h2>
+      <p class="text-sm text-[#80786e] mt-1">
+        花多少、拍下來，也一起留下旅行紀錄。
+      </p>
+    </div>
+
+
+
+
+    <!-- Exchange -->
+    <div class="muji-card p-5 mb-4">
+
+
+      <div class="flex justify-between items-center mb-4">
+        <div>
+          <h3 class="font-bold">日幣換算器</h3>
+          <p class="text-xs text-[#8b8378] mt-1">
+            可以直接輸入 500+200*3
+          </p>
+        </div>
+
+
+        <div class="text-xs">
+          <span class="text-[#8b8378]">1 JPY = </span>
+          <input
+            id="rateInput"
+            type="number"
+            step="0.0001"
+            class="w-20 bg-transparent border-b border-[#bdb4a7] text-center outline-none"
+          >
+          <span> TWD</span>
+        </div>
+      </div>
+
+
+      <input
+        id="calcInput"
+        type="text"
+        inputmode="decimal"
+        placeholder="例如：500+200*3"
+        class="w-full bg-[#F4F1EA] border-0 rounded-xl px-4 py-3 outline-none"
+      >
+
+
+      <button
+        onclick="calculateExpression()"
+        class="w-full mt-3 py-3 rounded-xl bg-[#3F3A34] text-white font-bold"
+      >
+        <i class="fa-solid fa-equals mr-2"></i>
+        計算
+      </button>
+
+
+      <div id="calcResult" class="mt-4 hidden">
+        <div class="text-xs text-[#8a8176]">計算結果</div>
+        <div id="calcJPY" class="text-2xl font-bold mt-1"></div>
+        <div id="calcTWD" class="text-sm text-[#7A8471] mt-1"></div>
+      </div>
+
+
+    </div>
+
+
+
+
+    <!-- Add expense -->
+    <div class="muji-card p-5 mb-4">
+
+
+      <h3 class="font-bold mb-4">
+        <i class="fa-solid fa-pen-to-square mr-2 text-[#7A8471]"></i>
+        新增記帳
+      </h3>
+
+
+      <input
+        id="expenseName"
+        type="text"
+        placeholder="品項，例如：奈良午餐"
+        class="w-full mb-3 bg-[#F4F1EA] rounded-xl px-4 py-3 outline-none"
+      >
+
+
+      <input
+        id="expenseAmount"
+        type="number"
+        inputmode="decimal"
+        placeholder="日幣金額"
+        class="w-full mb-3 bg-[#F4F1EA] rounded-xl px-4 py-3 outline-none"
+      >
+
+
+      <div class="flex gap-2">
+
+
+        <label class="flex-1 cursor-pointer">
+          <input
+            id="expensePhoto"
+            type="file"
+            accept="image/*"
+            capture="environment"
+            class="hidden"
+            onchange="handlePhoto(event)"
+          >
+
+
+          <div class="py-3 text-center rounded-xl border border-[#d6cec1]">
+            <i class="fa-solid fa-camera mr-1"></i>
+            拍照 / 上傳
+          </div>
+        </label>
+
+
+        <button
+          onclick="addExpense()"
+          class="flex-1 py-3 rounded-xl bg-[#7A8471] text-white font-bold"
+        >
+          <i class="fa-solid fa-plus mr-1"></i>
+          加入
+        </button>
+
+
+      </div>
+
+
+      <div id="photoPreview" class="hidden mt-3">
+        <img id="previewImage" class="w-20 h-20 rounded-xl object-cover">
+      </div>
+
+
+    </div>
+
+
+
+
+    <!-- Expense list -->
+    <div class="muji-card p-5">
+
+
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-bold">旅行花費</h3>
+
+
+        <button
+          onclick="clearExpenses()"
+          class="text-xs text-[#A65D57]"
+        >
+          清空
+        </button>
+      </div>
+
+
+      <div
+        id="expenseTotal"
+        class="bg-[#F4F1EA] rounded-xl p-4 mb-4"
+      ></div>
+
+
+      <div id="expenseList" class="space-y-3"></div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+
+  <!-- =========================
+       LISTS
+  ========================= -->
+  <section id="page-lists" class="page hidden-page px-4 pt-5">
+
+
+    <div class="mb-5">
+      <div class="text-xs tracking-[.2em] text-[#8c8378] mb-1">
+        CHECKLIST
+      </div>
+      <h2 class="section-title text-2xl font-bold">
+        清單
+      </h2>
+      <p class="text-sm text-[#80786e] mt-1">
+        出發前確認一次，旅途中也可以繼續使用。
+      </p>
+    </div>
+
+
+
+
+    <!-- Checklist -->
+    <div class="muji-card p-5 mb-4">
+
+
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-bold">
+          <i class="fa-solid fa-check mr-2 text-[#7A8471]"></i>
+          行前準備
+        </h3>
+
+
+        <span
+          id="checkProgress"
+          class="text-xs text-[#8b8378]"
+        ></span>
+      </div>
+
+
+      <div id="checklist" class="space-y-3"></div>
+
+
+    </div>
+
+
+
+
+    <!-- Memo -->
+    <div class="muji-card p-5">
+
+
+      <h3 class="font-bold mb-3">
+        <i class="fa-solid fa-note-sticky mr-2 text-[#B59A62]"></i>
+        個人備忘錄
+      </h3>
+
+
+      <textarea
+        id="memoInput"
+        rows="4"
+        placeholder="例如：
+USJ 需要帶水
+https://www.usj.co.jp/web/zh/tw/us"
+        class="w-full bg-[#F4F1EA] rounded-xl p-4 outline-none resize-none"
+      ></textarea>
+
+
+      <button
+        onclick="saveMemo()"
+        class="w-full mt-3 py-3 rounded-xl bg-[#3F3A34] text-white font-bold"
+      >
+        儲存備忘錄
+      </button>
+
+
+      <div id="memoList" class="mt-5 space-y-3"></div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+
+  <!-- =========================
+       INFO
+  ========================= -->
+  <section id="page-info" class="page hidden-page px-4 pt-5">
+
+
+    <div class="mb-5">
+      <div class="text-xs tracking-[.2em] text-[#8c8378] mb-1">
+        TRAVEL INFO
+      </div>
+      <h2 class="section-title text-2xl font-bold">
+        旅遊資訊
+      </h2>
+      <p class="text-sm text-[#80786e] mt-1">
+        緊急狀況、天氣與日本旅遊注意事項。
+      </p>
+    </div>
+
+
+
+
+    <!-- Weather -->
+    <div class="muji-card p-5 mb-4">
+
+
+      <h3 class="font-bold mb-3">
+        <i class="fa-solid fa-cloud-sun mr-2 text-[#718A96]"></i>
+        天氣
+      </h3>
+
+
+      <p class="text-sm leading-7 text-[#6d665d]">
+        出發前與每天早上建議確認京都、大阪與關西機場天氣。
+      </p>
+
+
+      <div class="grid grid-cols-2 gap-2 mt-4">
+
+
+        <a
+          href="https://www.jma.go.jp/jma/index.html"
+          target="_blank"
+          class="text-center py-3 rounded-xl bg-[#F4F1EA] text-sm"
+        >
+          日本氣象廳
+          <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+        </a>
+
+
+        <a
+          href="https://www.jma.go.jp/bosai/forecast/"
+          target="_blank"
+          class="text-center py-3 rounded-xl bg-[#F4F1EA] text-sm"
+        >
+          天氣預報
+          <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+
+
+    <!-- Emergency -->
+    <div class="muji-card p-5 mb-4">
+
+
+      <h3 class="font-bold mb-4">
+        <i class="fa-solid fa-phone mr-2 text-[#A65D57]"></i>
+        緊急聯絡
+      </h3>
+
+
+      <div class="grid grid-cols-2 gap-3">
+
+
+        <a
+          href="tel:110"
+          class="p-4 rounded-xl bg-[#F7ECE9]"
+        >
+          <div class="text-xs text-[#8d766e]">警察</div>
+          <div class="text-xl font-bold mt-1">110</div>
+        </a>
+
+
+        <a
+          href="tel:119"
+          class="p-4 rounded-xl bg-[#F7ECE9]"
+        >
+          <div class="text-xs text-[#8d766e]">救護／消防</div>
+          <div class="text-xl font-bold mt-1">119</div>
+        </a>
+
+
+      </div>
+
+
+      <a
+        href="https://www.roc-taiwan.org/jposa/"
+        target="_blank"
+        class="block mt-3 p-4 rounded-xl bg-[#F4F1EA]"
+      >
+        <div class="text-xs text-[#8b8378]">
+          外交部駐大阪辦事處
+        </div>
+        <div class="font-bold mt-1">
+          查看官方資訊
+          <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-xs"></i>
+        </div>
+      </a>
+
+
+    </div>
+
+
+
+
+    <!-- Important notes -->
+    <div class="muji-card p-5 mb-4">
+
+
+      <h3 class="font-bold mb-4">
+        <i class="fa-solid fa-circle-exclamation mr-2 text-[#B59A62]"></i>
+        日本旅遊注意事項
+      </h3>
+
+
+      <div class="space-y-4 text-sm leading-7 text-[#625b53]">
+
+
+        <div>
+          <div class="font-bold">① 藥品與入境</div>
+          <p>
+            部分處方藥、管制藥物與成分可能受到日本法規限制。
+            若攜帶藥品，出發前應確認日本厚生勞動省相關規定。
+          </p>
+        </div>
+
+
+        <div>
+          <div class="font-bold">② 現金與付款</div>
+          <p>
+            京都與大阪多數商店可以使用信用卡或電子支付，
+            但部分小店、市場與寺社周邊仍可能只收現金。
+          </p>
+        </div>
+
+
+        <div>
+          <div class="font-bold">③ 垃圾</div>
+          <p>
+            日本街頭公共垃圾桶相對少，建議隨身攜帶小袋子，
+            垃圾帶回住宿處或在適當地點分類丟棄。
+          </p>
+        </div>
+
+
+        <div>
+          <div class="font-bold">④ 電車禮儀</div>
+          <p>
+            車內盡量保持安靜，手機避免通話。
+            月台排隊時依地面標線站立。
+          </p>
+        </div>
+
+
+        <div>
+          <div class="font-bold">⑤ 神社寺院</div>
+          <p>
+            進入神社或寺院時，注意參拜規矩。
+            不要踩踏禁止進入區域，也不要在不允許攝影的位置拍照。
+          </p>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+
+
+    <!-- Hotel -->
+    <div class="muji-card p-5">
+
+
+      <h3 class="font-bold mb-4">
+        <i class="fa-solid fa-bed mr-2 text-[#7A8471]"></i>
+        住宿
+      </h3>
+
+
+      <div class="space-y-3">
+
+
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Richmond+Hotel+Premier+Kyoto+Ekimae"
+          target="_blank"
+          class="block p-4 rounded-xl bg-[#F4F1EA]"
+        >
+          <div class="text-xs text-[#8c8378]">10/17 — 10/21</div>
+          <div class="font-bold mt-1">京都站前里士滿</div>
+          <div class="text-xs mt-1 text-[#8c8378]">
+            開啟 Google Maps
+          </div>
+        </a>
+
+
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=integrate+hotel+Osaka"
+          target="_blank"
+          class="block p-4 rounded-xl bg-[#F4F1EA]"
+        >
+          <div class="text-xs text-[#8c8378]">10/21 — 10/23</div>
+          <div class="font-bold mt-1">大阪 integrate 飯店</div>
+          <div class="text-xs mt-1 text-[#8c8378]">
+            開啟 Google Maps
+          </div>
+        </a>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+</main>
+
+
+
+
+<!-- =========================
+     BOTTOM NAV
+========================= -->
+<nav
+  class="fixed bottom-0 left-0 right-0 z-50 bg-[#FAF9F6]/95 backdrop-blur border-t border-[#ddd5ca]"
+>
+  <div class="max-w-[760px] mx-auto grid grid-cols-5">
+
+
+    <button
+      class="nav-item active py-3 text-center"
+      data-page="plan"
+      onclick="switchPage('plan')"
+    >
+      <div class="nav-icon text-lg">
+        <i class="fa-regular fa-calendar"></i>
+      </div>
+      <div class="text-[10px] mt-1">PLAN</div>
+    </button>
+
+
+    <button
+      class="nav-item py-3 text-center"
+      data-page="guide"
+      onclick="switchPage('guide')"
+    >
+      <div class="nav-icon text-lg">
+        <i class="fa-solid fa-book-open"></i>
+      </div>
+      <div class="text-[10px] mt-1">GUIDE</div>
+    </button>
+
+
+    <button
+      class="nav-item py-3 text-center"
+      data-page="wallet"
+      onclick="switchPage('wallet')"
+    >
+      <div class="nav-icon text-lg">
+        <i class="fa-solid fa-yen-sign"></i>
+      </div>
+      <div class="text-[10px] mt-1">WALLET</div>
+    </button>
+
+
+    <button
+      class="nav-item py-3 text-center"
+      data-page="lists"
+      onclick="switchPage('lists')"
+    >
+      <div class="nav-icon text-lg">
+        <i class="fa-solid fa-list-check"></i>
+      </div>
+      <div class="text-[10px] mt-1">LISTS</div>
+    </button>
+
+
+    <button
+      class="nav-item py-3 text-center"
+      data-page="info"
+      onclick="switchPage('info')"
+    >
+      <div class="nav-icon text-lg">
+        <i class="fa-solid fa-circle-info"></i>
+      </div>
+      <div class="text-[10px] mt-1">INFO</div>
+    </button>
+
+
+  </div>
+</nav>
+
+
+
+
+<!-- =========================
+     GUIDE MODAL
+========================= -->
+<div
+  id="guideModal"
+  class="hidden fixed inset-0 z-[80] modal-bg p-4"
+>
+  <div class="min-h-full flex items-center justify-center">
+
+
+    <div class="modal-box w-full max-w-xl bg-[#FAF9F6] rounded-2xl">
+
+
+      <div
+        class="sticky top-0 bg-[#FAF9F6]/95 backdrop-blur p-5 border-b border-[#e2dbd0] flex justify-between items-center"
+      >
+        <div>
+          <div
+            id="modalCategory"
+            class="text-[10px] tracking-widest text-[#8c8378]"
+          ></div>
+          <h3 id="modalTitle" class="font-bold text-lg mt-1"></h3>
+        </div>
+
+
+        <button
+          onclick="closeGuide()"
+          class="w-9 h-9 rounded-full bg-[#F4F1EA]"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+
+      <div class="p-5">
+        <div id="modalContent" class="guide-content"></div>
+
+
+        <a
+          id="modalMap"
+          href="#"
+          target="_blank"
+          class="block mt-5 text-center py-3 rounded-xl bg-[#3F3A34] text-white"
+        >
+          <i class="fa-solid fa-location-dot mr-1"></i>
+          開啟 Google Maps
+        </a>
+      </div>
+
+
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+<!-- =========================
+     TOAST
+========================= -->
+<div id="toast" class="toast">
+  <div class="bg-[#3F3A34] text-white px-5 py-3 rounded-full text-sm shadow-lg">
+    <i class="fa-solid fa-check mr-2"></i>
+    <span id="toastText">已完成</span>
+  </div>
+</div>
+
+
+
+
+<script>
+/* =========================================================
+   DATA
+========================================================= */
+
+
+const tripDays = [
+  {
+    day: "Day 1",
+    date: "10/17（六）",
+    title: "奈良｜鹿與古寺",
+    emoji: "🦌",
+    hotel: "京都站前里士滿",
+    items: [
+      ["21:30–23:30", "🚄", "高鐵／桃園", "transport"],
+      ["23:30–23:50", "🚇", "機捷／一航", "transport"],
+      ["00:00", "✈️", "桃園機場", "important"],
+      ["02:30–06:05", "✈️", "關西機場", "transport"],
+      ["06:05–07:00", "🛂", "出關", "important"],
+      ["07:00–07:15", "🚶‍♀️", "1航－南海電鐵", "transport"],
+      ["07:15–08:05", "🚃", "空港急行／難波", "transport"],
+      ["08:05–08:14", "🚶‍♀️", "南海－大阪難波", "transport"],
+      ["08:14–08:55", "🚄", "近鐵奈良／奈良", "transport"],
+      ["08:55–09:15", "🚶‍♀️", "近鐵－奈良公園", "transport"],
+      ["09:15–10:15", "🦌", "奈良公園", "place", "Nara Park"],
+      ["10:16–11:30", "🪷", "東大寺", "place", "Todai-ji Temple"],
+      ["11:30–13:00", "🍽️", "午餐", "food", "Nara lunch"],
+      ["13:00–14:30", "⛩️", "春日大社", "place", "Kasuga Taisha"],
+      ["14:30–15:14", "🚶‍♀️", "春日大社－近鐵", "transport"],
+      ["15:14–16:05", "🚄", "近鐵京都／京都", "transport"],
+      ["16:05–16:15", "🚶‍♀️", "京都站－飯店", "transport"],
+      ["16:15–17:15", "🏨", "京都站前里士滿", "hotel"],
+      ["17:15–22:00", "🍽️🛍️", "晚餐＆購物", "food", "Kyoto Station"],
+    ]
+  },
+
+
+  {
+    day: "Day 2",
+    date: "10/18（日）",
+    title: "京都北山｜神社與水之京都",
+    emoji: "⛩️",
+    hotel: "京都站前里士滿",
+    items: [
+      ["07:15–07:25", "🚶‍♀️", "飯店－公車站（下京區綜合廳舍前 B月台）", "transport"],
+      ["07:25–07:55", "🚌", "205／下鴨神社", "transport"],
+      ["07:55–09:20", "⛩️", "下鴨神社＆河合神社", "place", "Shimogamo Shrine"],
+      ["09:20–09:37", "🚶‍♀️", "下鴨－出町柳站", "transport"],
+      ["09:37–10:00", "🚃", "叡山電鐵本線／八瀨比叡山口", "transport"],
+      ["10:00–11:45", "⛩️", "瑠璃光院", "place", "Rurikoin Temple Kyoto"],
+      ["11:45–12:02", "🚌", "19路／大原", "transport"],
+      ["12:02–13:00", "🍽️", "午餐", "food", "Ohara Kyoto lunch"],
+      ["13:00–14:45", "🪷", "三千院", "place", "Sanzen-in Temple"],
+      ["14:45–15:05", "🚕", "三千院－貴船", "transport"],
+      ["15:05–17:20", "⛩️", "貴船神社", "place", "Kifune Shrine"],
+      ["17:20–17:24", "🚌", "33／貴船口", "transport"],
+      ["17:35–18:05", "🚃", "叡山電鐵鞍馬線／出町柳站", "transport"],
+      ["18:13–18:18", "🚇", "京阪本線／祇園四條站", "transport"],
+      ["18:18–21:50", "🍲🛍️", "晚餐＆河原町", "food", "Kawaramachi Kyoto"],
+      ["21:50–22:05", "🚌", "205／下京區綜合廳舍前", "transport"]
+    ]
+  },
+
+
+  {
+    day: "Day 3",
+    date: "10/19（一）",
+    title: "嵐山｜竹林與渡月橋",
+    emoji: "🎋",
+    hotel: "京都站前里士滿",
+    items: [
+      ["07:00–07:18", "🚶‍♀️", "飯店－京都站", "transport"],
+      ["07:18–07:35", "🚄", "山陰本線", "transport"],
+      ["07:35–08:30", "🎋", "嵐山竹林小徑", "place", "Arashiyama Bamboo Grove"],
+      ["08:30–09:30", "⛩️", "野宮神社", "place", "Nonomiya Shrine"],
+      ["09:30–11:00", "🪷", "天龍寺", "place", "Tenryu-ji Temple"],
+      ["11:00–12:30", "🍜", "蕎麥麵よしむら", "food", "Yoshimura Soba Arashiyama"],
+      ["12:30–14:00", "🛍️", "拉拉熊、京豆庵、中村屋", "food", "Arashiyama Kyoto"],
+      ["14:00–14:45", "🌉", "渡月橋", "place", "Togetsukyo Bridge"],
+      ["14:45–15:00", "🚶‍♀️", "JR嵯峨嵐山站", "transport"],
+      ["15:02–15:25", "🚂", "嵯峨野線／龜岡", "transport"],
+      ["15:25–15:35", "🚶‍♀️", "JR馬堀", "transport"],
+      ["15:38–16:04", "🚄", "山陰本線／京都站", "transport"],
+      ["16:13–16:17", "🚇", "烏丸線／四條", "transport"],
+      ["16:17–17:30", "🍽️⛩️", "錦市場＆天滿宮", "food", "Nishiki Market Kyoto"],
+      ["17:30–19:00", "🌙", "鴨川＆祇園", "place", "Gion Kyoto"],
+      ["19:00–20:30", "🛍️", "河原町", "food", "Kawaramachi Kyoto"],
+      ["20:30–21:50", "🍢", "鳥貴族", "food", "Torikizoku Kawaramachi"],
+      ["21:50–22:05", "🚌", "205／下京區綜合廳舍前", "transport"]
+    ]
+  },
+
+
+  {
+    day: "Day 4",
+    date: "10/20（二）",
+    title: "伏見稻荷｜京都市中心",
+    emoji: "⛩️",
+    hotel: "京都站前里士滿",
+    items: [
+      ["07:30–07:40", "🚶‍♀️", "飯店－京都站", "transport"],
+      ["07:40–07:47", "🚄", "JR奈良／稻荷站", "transport"],
+      ["07:47–09:40", "⛩️", "伏見稻荷大社", "place", "Fushimi Inari Taisha"],
+      ["09:40–09:45", "🚃", "京阪本線／七條", "transport"],
+      ["09:45–11:00", "⛩️", "三十三間堂", "place", "Sanjusangen-do Temple"],
+      ["11:08–11:21", "🚌", "206／祇園", "transport"],
+      ["11:30–13:00", "🍽️", "挽肉與米", "food", "Hikiniku to Come Kyoto"],
+      ["13:00–21:00", "🛍️🍽️", "河原町＆寶可夢中心", "food", "Pokemon Center Kyoto"],
+      ["21:03–21:18", "🚌", "205／下京區綜合廳舍前", "transport"]
+    ]
+  },
+
+
+  {
+    day: "Day 5",
+    date: "10/21（三）",
+    title: "東寺 → 勝尾寺 → 大阪",
+    emoji: "🏯",
+    hotel: "大阪 integrate 飯店",
+    items: [
+      ["07:40–08:00", "🚶‍♀️", "飯店－東寺", "transport"],
+      ["08:00–09:45", "🪷", "東寺、弘法市集", "place", "Toji Temple Kyoto"],
+      ["09:45–10:00", "🚶‍♀️", "東寺－飯店", "transport"],
+      ["10:00–10:45", "🏨", "退房", "important"],
+      ["10:45–11:15", "🚄", "東海道本線／大阪", "transport"],
+      ["11:15–11:30", "🚶‍♀️", "車站－飯店", "transport"],
+      ["11:30–12:50", "🏨🍽️", "寄行李＆午餐", "hotel"],
+      ["12:53–13:20", "🚃", "御堂筋／箕面萱野", "transport"],
+      ["13:30–13:52", "🚌", "阪急30／勝尾寺", "transport"],
+      ["13:52–16:00", "⛩️", "勝尾寺", "place", "Katsuoji Temple"],
+      ["16:00–16:21", "🚌", "阪急30／箕面萱野", "transport"],
+      ["16:32–17:00", "🚃", "御堂筋／梅田", "transport"],
+      ["17:00–20:30", "🛍️", "梅田購物", "food", "Umeda Osaka"],
+      ["20:30–22:30", "🍖", "燒肉力丸", "food", "Yakiniku Rikimaru Umeda"],
+    ]
+  },
+
+
+  {
+    day: "Day 6",
+    date: "10/22（四）",
+    title: "Universal Studios Japan",
+    emoji: "🎢",
+    hotel: "大阪 integrate 飯店",
+    items: [
+      ["07:45–08:00", "🚶‍♀️", "飯店－車站", "transport"],
+      ["08:09–08:18", "🚄", "JR環狀／西九條", "transport"],
+      ["08:25–08:30", "🚄", "JR夢咲／環球", "transport"],
+      ["08:30–20:30", "🎢", "環球影城", "important", "Universal Studios Japan"],
+      ["20:35–20:45", "🚄", "JR夢咲／西九條", "transport"],
+      ["20:48–20:55", "🚄", "JR環狀／大阪", "transport"],
+      ["20:55–22:00", "🍜", "一蘭拉麵", "food", "Ichiran Ramen Osaka"],
+      ["22:00", "🏨", "大阪 integrate 飯店", "hotel"]
+    ]
+  },
+
+
+  {
+    day: "Day 7",
+    date: "10/23（五）",
+    title: "泉佐野 → 關西機場 → 台灣",
+    emoji: "🛍️",
+    hotel: "HOME",
+    items: [
+      ["08:30–09:00", "🏨", "退房", "important"],
+      ["09:07–09:23", "🚄", "JR環狀／新今宮", "transport"],
+      ["09:30–10:04", "🚃", "南海電鐵／泉佐野", "transport"],
+      ["10:04–10:25", "🚶‍♀️", "車站－市場＆寄行李", "transport"],
+      ["10:25–12:00", "🐟", "泉佐野青空市場", "place", "Izumisano Blue Market"],
+      ["12:00–12:20", "🚶‍♀️", "青空市場－車站", "transport"],
+      ["12:28–12:38", "🚃", "南海電鐵／空港", "transport"],
+      ["12:38–15:20", "✈️", "關西機場", "important"],
+      ["15:20–17:20", "✈️", "關西－桃園機場", "important"],
+      ["17:20–18:00", "🛂", "出關", "important"],
+      ["18:12–18:35", "🚇", "機捷／高鐵、北車", "transport"],
+      ["18:43–20:20", "🚄", "高鐵／左營", "transport"],
+      ["20:20", "🏠", "回家", "hotel"]
+    ]
+  }
+];
+
+
+
+
+/* =========================================================
+   GUIDE DATA
+========================================================= */
+
+
+const guides = [
+
+
+  {
+    title: "奈良公園",
+    category: "NARA · DEER",
+    icon: "🦌",
+    map: "Nara Park",
+    content: `
+      <p>
+        奈良公園是奈良最具代表性的景觀之一。
+        這裡最有名的不是單純的「鹿」，而是鹿與古代寺社文化共同形成的城市景觀。
+      </p>
+
+
+      <h4>🦌 為什麼奈良有這麼多鹿？</h4>
+      <p>
+        在奈良的傳統信仰中，鹿被視為神的使者。
+        春日大社創建時，相傳神明從茨城縣鹿島乘鹿來到奈良，
+        因此鹿逐漸成為奈良非常重要的象徵。
+      </p>
+
+
+      <h4>🍘 鹿仙貝小提醒</h4>
+      <p>
+        鹿仙貝吃完後記得把手攤開給鹿看。
+        如果手上已經沒有食物，鹿通常會知道「沒有了」。
+        千萬不要拿普通食物餵鹿。
+      </p>
+
+
+      <h4>📸 拍照小技巧</h4>
+      <p>
+        早上的奈良公園通常比較舒服。
+        可以利用鹿、石燈籠與樹木形成前後景，
+        拍出比較有日本古都感的照片。
+      </p>
+    `
+  },
+
+
+  {
+    title: "東大寺",
+    category: "NARA · TEMPLE",
+    icon: "🪷",
+    map: "Todai-ji Temple",
+    content: `
+      <p>
+        東大寺是奈良時代日本佛教與國家權力的重要象徵。
+        最著名的大佛殿供奉著巨大的盧舍那佛。
+      </p>
+
+
+      <h4>🏯 世界最大的木造建築之一</h4>
+      <p>
+        現在看到的大佛殿並不是最初的版本。
+        歷史上曾經歷火災與重建，但即使經過縮小，
+        現存建築仍然展現驚人的木造工程技術。
+      </p>
+
+
+      <h4>🪷 大佛</h4>
+      <p>
+        東大寺大佛代表盧舍那佛，
+        象徵以佛法照耀世界。
+        進入大佛殿後，可以特別注意巨大的木柱、屋架與大佛本身的比例。
+      </p>
+    `
+  },
+
+
+  {
+    title: "下鴨神社",
+    category: "KYOTO · SHRINE",
+    icon: "⛩️",
+    map: "Shimogamo Shrine",
+    content: `
+      <p>
+        下鴨神社正式名稱為賀茂御祖神社，
+        是京都非常古老的神社之一。
+        神社位於鴨川與高野川交會附近，被糺之森包圍。
+      </p>
+
+
+      <h4>🌳 糺之森</h4>
+      <p>
+        「糺之森」是一片保存相當完整的森林。
+        走進森林後，城市的聲音會明顯降低，
+        很容易感受到京都古都與自然融合的氛圍。
+      </p>
+
+
+      <h4>💧 河合神社</h4>
+      <p>
+        河合神社與女性守護、容貌相關的信仰相當有名。
+        如果有看到繪馬，可以觀察許多參拜者如何繪製自己的理想容貌。
+      </p>
+    `
+  },
+
+
+  {
+    title: "瑠璃光院",
+    category: "KYOTO · RURIKOIN",
+    icon: "🍃",
+    map: "Rurikoin Temple Kyoto",
+    content: `
+      <p>
+        瑠璃光院位於京都八瀨地區，
+        最著名的就是窗景與桌面反射形成的「額框式」景色。
+      </p>
+
+
+      <h4>🍃 為什麼這裡這麼熱門？</h4>
+      <p>
+        二樓書院的大窗戶把庭園切割成像一幅畫，
+        黑色桌面又會反射樹木，使景色看起來更加濃郁。
+      </p>
+
+
+      <h4>📷 拍照注意</h4>
+      <p>
+        最熱門的位置通常需要排隊。
+        拍攝時可以把手機放低一點，
+        讓桌面反射與窗外庭園同時進入畫面。
+      </p>
+    `
+  },
+
+
+  {
+    title: "貴船神社",
+    category: "KYOTO · KIFUNE",
+    icon: "⛩️",
+    map: "Kifune Shrine",
+    content: `
+      <p>
+        貴船神社位於京都北部山區，
+        是日本水神信仰的重要場所。
+        「貴船」本身就與水源、河川及祈雨文化有密切關係。
+      </p>
+
+
+      <h4>💧 水占卜</h4>
+      <p>
+        貴船神社非常著名的體驗就是「水占」。
+        將籤紙放到指定水面後，文字才會逐漸浮現。
+      </p>
+
+
+      <h4>🌲 山谷中的神社</h4>
+      <p>
+        與京都市中心相比，貴船的環境明顯更加涼爽與自然。
+        傍晚離開時要留意公車及電車班次。
+      </p>
+    `
+  },
+
+
+  {
+    title: "嵐山竹林",
+    category: "ARASHIYAMA · BAMBOO",
+    icon: "🎋",
+    map: "Arashiyama Bamboo Grove",
+    content: `
+      <p>
+        嵐山竹林是京都最具辨識度的景色之一。
+        高聳竹林形成自然的垂直線條，非常適合拍攝人物與風景。
+      </p>
+
+
+      <h4>🌿 為什麼安排早上？</h4>
+      <p>
+        嵐山是京都熱門景點，
+        越晚人潮通常越多。
+        你們安排 07:35 左右抵達其實是非常適合拍照的時段。
+      </p>
+
+
+      <h4>🚶 行走建議</h4>
+      <p>
+        竹林道路本身不算非常長，
+        建議不要只拍竹林，
+        可以與野宮神社、天龍寺、渡月橋串成完整的嵐山散步路線。
+      </p>
+    `
+  },
+
+
+  {
+    title: "伏見稻荷大社",
+    category: "KYOTO · FUSHIMI INARI",
+    icon: "⛩️",
+    map: "Fushimi Inari Taisha",
+    content: `
+      <p>
+        伏見稻荷大社是京都最著名的神社之一，
+        最大特色就是山坡上連續排列的大量朱紅色鳥居。
+      </p>
+
+
+      <h4>🦊 狐狸不是神明本身</h4>
+      <p>
+        在稻荷信仰中，狐狸被視為稻荷大神的使者。
+        因此神社各處經常可以看到狐狸雕像。
+      </p>
+
+
+      <h4>⛩️ 千本鳥居</h4>
+      <p>
+        「千本鳥居」並非單純的觀光裝飾，
+        很多鳥居其實是個人、家庭或企業奉納，
+        用來表達祈願或感謝。
+      </p>
+    `
+  },
+
+
+  {
+    title: "東寺",
+    category: "KYOTO · TOJI",
+    icon: "🏯",
+    map: "Toji Temple Kyoto",
+    content: `
+      <p>
+        東寺是京都非常重要的佛教寺院，
+        與平安京建立後的城市規劃有密切關係。
+      </p>
+
+
+      <h4>🏯 五重塔</h4>
+      <p>
+        東寺五重塔是京都極具代表性的天際線。
+        木造塔身的多層結構，讓它成為日本傳統建築的經典象徵。
+      </p>
+
+
+      <h4>🛍️ 弘法市</h4>
+      <p>
+        你們安排的日期恰好接近東寺著名的弘法市。
+        如果遇到市集，可以看到古董、陶器、和服、雜貨與各種二手物件。
+      </p>
+    `
+  },
+
+
+  {
+    title: "勝尾寺",
+    category: "OSAKA · KATSUOJI",
+    icon: "⛩️",
+    map: "Katsuoji Temple",
+    content: `
+      <p>
+        勝尾寺位於大阪箕面一帶，
+        最具辨識度的特色就是遍布寺院各處的「勝運達摩」。
+      </p>
+
+
+      <h4>🔴 為什麼是達摩？</h4>
+      <p>
+        達摩象徵願望與勝運。
+        傳統上會先許願並畫上一邊的眼睛，
+        願望實現後再完成另一邊。
+      </p>
+
+
+      <h4>📸 拍照</h4>
+      <p>
+        勝尾寺的達摩分布在庭園、石階與各個角落，
+        很適合慢慢找尋不同造型的達摩。
+      </p>
+    `
+  },
+
+
+  {
+    title: "Universal Studios Japan",
+    category: "OSAKA · USJ",
+    icon: "🎢",
+    map: "Universal Studios Japan",
+    content: `
+      <p>
+        Universal Studios Japan 位於大阪此花區，
+        是這趟旅程中最偏娛樂型的一天。
+      </p>
+
+
+      <h4>🎢 行程策略</h4>
+      <p>
+        你們安排 08:30～20:30 幾乎是一整天。
+        建議入園後先處理最想玩的設施，
+        不要把最重要的項目全部留到晚上。
+      </p>
+
+
+      <h4>📱 App</h4>
+      <p>
+        建議事先安裝 USJ 官方 App，
+        出發前也確認當日營業時間、整理券與設施資訊。
+      </p>
+
+
+      <iframe
+        class="map-frame mt-4"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=135.425%2C34.662%2C135.445%2C34.675&layer=mapnik&marker=34.6654%2C135.4323"
+        loading="lazy"
+        title="USJ OpenStreetMap">
+      </iframe>
+    `
+  }
+
+
+];
+
+
+
+
+/* =========================================================
+   CHECKLIST
+========================================================= */
+
+
+const checklistItems = [
+  "護照",
+  "台灣身分證",
+  "信用卡 / 金融卡",
+  "日幣現金",
+  "網卡 / eSIM",
+  "手機充電器",
+  "行動電源",
+  "充電線",
+  "轉接頭",
+  "耳機",
+  "常備藥品",
+  "個人盥洗用品",
+  "雨傘",
+  "外套",
+  "舒適鞋子",
+  "旅行保險",
+  "機票 / 登機資訊",
+  "住宿資訊",
+  "USJ 票券 / App",
+  "Google Maps / 乘換案內"
+];
+
+
+
+
+/* =========================================================
+   LOCAL STORAGE
+========================================================= */
+
+
+const STORAGE = {
+  rate: "japanTripRate",
+  expenses: "japanTripExpenses",
+  checks: "japanTripChecklist",
+  memos: "japanTripMemos"
+};
+
+
+
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+
+function switchPage(page) {
+
+
+  document.querySelectorAll(".page").forEach(el => {
+    el.classList.add("hidden-page");
+  });
+
+
+  document
+    .getElementById("page-" + page)
+    .classList.remove("hidden-page");
+
+
+  document.querySelectorAll(".nav-item").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+
+  const active = document.querySelector(
+    `.nav-item[data-page="${page}"]`
+  );
+
+
+  if (active) {
+    active.classList.add("active");
+  }
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+
+
+/* =========================================================
+   PLAN
+========================================================= */
+
+
+let currentDay = 0;
+
+
+function renderDayButtons() {
+
+
+  const container = document.getElementById("daySelector");
+
+
+  container.innerHTML = tripDays.map((day, index) => `
+    <button
+      class="day-button rounded-xl px-3 py-2 text-xs flex-shrink-0 ${index === currentDay ? "active" : ""}"
+      onclick="selectDay(${index})"
+    >
+      <div>${day.day}</div>
+      <div class="mt-0.5">${day.date.substring(0,5)}</div>
+    </button>
+  `).join("");
+}
+
+
+
+
+function selectDay(index) {
+
+
+  currentDay = index;
+
+
+  renderDayButtons();
+  renderTimeline();
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+
+
+function renderTimeline() {
+
+
+  const day = tripDays[currentDay];
+
+
+  document.getElementById("dayHeader").innerHTML = `
+    <div class="flex items-start justify-between">
+
+
+      <div>
+        <div class="text-xs tracking-widest text-[#8b8378]">
+          ${day.date}
+        </div>
+
+
+        <h3 class="font-maru text-xl font-bold mt-1">
+          ${day.emoji} ${day.title}
+        </h3>
+      </div>
+
+
+      <div class="text-right text-xs text-[#8b8378]">
+        <div>住宿</div>
+        <div class="font-bold text-[#665C50] mt-1">
+          ${day.hotel}
+        </div>
+      </div>
+
+
+    </div>
+  `;
+
+
+
+
+  const timeline = document.getElementById("timeline");
+
+
+  timeline.innerHTML = day.items.map((item, index) => {
+
+
+    const [time, icon, title, type, search] = item;
+
+
+    const isImportant = type === "important";
+    const isTransport = type === "transport";
+
+
+    let actions = "";
+
+
+    if (search) {
+
+
+      const maps =
+        "https://www.google.com/maps/search/?api=1&query=" +
+        encodeURIComponent(search);
+
+
+      const foodSearch =
+        "https://www.google.com/search?q=" +
+        encodeURIComponent(search + " 食記");
+
+
+      actions = `
+        <div class="flex gap-2 mt-2">
+
+
+          <a
+            href="${maps}"
+            target="_blank"
+            class="inline-flex items-center px-2.5 py-1.5 rounded-lg bg-[#F4F1EA] text-[11px]"
+          >
+            <i class="fa-solid fa-location-dot mr-1"></i>
+            Maps
+          </a>
+
+
+          <a
+            href="${foodSearch}"
+            target="_blank"
+            class="inline-flex items-center px-2.5 py-1.5 rounded-lg bg-[#F4F1EA] text-[11px]"
+          >
+            <i class="fa-solid fa-utensils mr-1"></i>
+            ${type === "food" ? "查看食記" : "搜尋"}
+          </a>
+
+
+        </div>
+      `;
+    }
+
+
+    return `
+      <div class="timeline-item ${isImportant ? "important" : ""} ${isTransport ? "transport" : ""}">
+
+
+        <div class="timeline-dot"></div>
+
+
+        <div
+          class="rounded-xl p-3
+          ${isImportant ? "important-card" : ""}
+          ${isTransport ? "transport-card" : "bg-[#FAF9F6]"}"
+        >
+
+
+          <div class="timeline-time">
+            ${time}
+          </div>
+
+
+          <div class="timeline-text">
+            <span class="mr-1">${icon}</span>
+            ${title}
+          </div>
+
+
+          ${actions}
+
+
+        </div>
+
+
+      </div>
+    `;
+  }).join("");
+}
+
+
+
+
+/* =========================================================
+   GUIDE
+========================================================= */
+
+
+function renderGuides() {
+
+
+  const container = document.getElementById("guideList");
+
+
+  container.innerHTML = guides.map((guide, index) => `
+    <button
+      onclick="openGuide(${index})"
+      class="muji-card w-full text-left p-5 flex items-center justify-between"
+    >
+
+
+      <div class="flex items-center">
+
+
+        <div class="w-12 h-12 rounded-xl bg-[#F4F1EA] flex items-center justify-center text-2xl">
+          ${guide.icon}
+        </div>
+
+
+        <div class="ml-4">
+
+
+          <div class="text-[10px] tracking-widest text-[#938a80]">
+            ${guide.category}
+          </div>
+
+
+          <div class="font-bold mt-1">
+            ${guide.title}
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+      <i class="fa-solid fa-chevron-right text-[#aaa096]"></i>
+
+
+    </button>
+  `).join("");
+}
+
+
+
+
+function openGuide(index) {
+
+
+  const guide = guides[index];
+
+
+  document.getElementById("modalCategory").textContent =
+    guide.category;
+
+
+  document.getElementById("modalTitle").textContent =
+    guide.icon + " " + guide.title;
+
+
+  document.getElementById("modalContent").innerHTML =
+    guide.content;
+
+
+  document.getElementById("modalMap").href =
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(guide.map);
+
+
+  document
+    .getElementById("guideModal")
+    .classList.remove("hidden");
+
+
+  document.body.style.overflow = "hidden";
+}
+
+
+
+
+function closeGuide() {
+
+
+  document
+    .getElementById("guideModal")
+    .classList.add("hidden");
+
+
+  document.body.style.overflow = "";
+}
+
+
+
+
+document
+  .getElementById("guideModal")
+  .addEventListener("click", function(e) {
+
+
+    if (e.target === this) {
+      closeGuide();
+    }
+
+
+  });
+
+
+
+
+/* =========================================================
+   WALLET — RATE
+========================================================= */
+
+
+function loadRate() {
+
+
+  const saved =
+    localStorage.getItem(STORAGE.rate);
+
+
+  const rateInput =
+    document.getElementById("rateInput");
+
+
+  rateInput.value =
+    saved ? saved : "0.21";
+}
+
+
+
+
+document
+  .getElementById("rateInput")
+  .addEventListener("change", function() {
+
+
+    const rate = Number(this.value);
+
+
+    if (!rate || rate <= 0) {
+      showToast("請輸入正確匯率");
+      return;
+    }
+
+
+    localStorage.setItem(
+      STORAGE.rate,
+      rate
+    );
+
+
+    renderExpenses();
+
+
+  });
+
+
+
+
+/* =========================================================
+   SAFE EXPRESSION CALCULATOR
+========================================================= */
+
+
+function calculateExpression() {
+
+
+  const expression =
+    document.getElementById("calcInput").value.trim();
+
+
+  if (!expression) {
+    showToast("請輸入算式");
+    return;
+  }
+
+
+  try {
+
+
+    const result =
+      evaluateExpression(expression);
+
+
+    const rate =
+      Number(document.getElementById("rateInput").value);
+
+
+    const twd =
+      result * rate;
+
+
+    document
+      .getElementById("calcResult")
+      .classList.remove("hidden");
+
+
+    document.getElementById("calcJPY").textContent =
+      result.toLocaleString("ja-JP") + " JPY";
+
+
+    document.getElementById("calcTWD").textContent =
+      "約 NT$ " + Math.round(twd).toLocaleString();
+
+
+  } catch (error) {
+
+
+    showToast("算式格式錯誤");
+
+
+  }
+}
+
+
+
+
+function evaluateExpression(expr) {
+
+
+  expr = expr.replace(/\s+/g, "");
+
+
+  if (!/^[0-9+\-*/().]+$/.test(expr)) {
+    throw new Error("Invalid");
+  }
+
+
+  const tokens = expr.match(
+    /(\d+(?:\.\d+)?)|[()+\-*/]/g
+  );
+
+
+  const values = [];
+  const operators = [];
+
+
+  const precedence = {
+    "+": 1,
+    "-": 1,
+    "*": 2,
+    "/": 2
+  };
+
+
+  function applyOperator() {
+
+
+    const op = operators.pop();
+
+
+    const b = values.pop();
+    const a = values.pop();
+
+
+    if (op === "+") values.push(a + b);
+    if (op === "-") values.push(a - b);
+    if (op === "*") values.push(a * b);
+    if (op === "/") values.push(a / b);
+
+
+  }
+
+
+  for (let i = 0; i < tokens.length; i++) {
+
+
+    const token = tokens[i];
+
+
+    if (!isNaN(token)) {
+
+
+      values.push(Number(token));
+
+
+    } else if (token === "(") {
+
+
+      operators.push(token);
+
+
+    } else if (token === ")") {
+
+
+      while (
+        operators.length &&
+        operators[operators.length - 1] !== "("
+      ) {
+        applyOperator();
+      }
+
+
+      if (
+        operators.length === 0 ||
+        operators.pop() !== "("
+      ) {
+        throw new Error("Parenthesis");
+      }
+
+
+    } else {
+
+
+      while (
+        operators.length &&
+        operators[operators.length - 1] !== "(" &&
+        precedence[operators[operators.length - 1]]
+          >= precedence[token]
+      ) {
+        applyOperator();
+      }
+
+
+      operators.push(token);
+    }
+  }
+
+
+  while (operators.length) {
+
+
+    if (operators[operators.length - 1] === "(") {
+      throw new Error("Parenthesis");
+    }
+
+
+    applyOperator();
+  }
+
+
+  if (values.length !== 1) {
+    throw new Error("Invalid");
+  }
+
+
+  return values[0];
+}
+
+
+
+
+/* =========================================================
+   WALLET — PHOTO
+========================================================= */
+
+
+let pendingPhoto = null;
+
+
+
+
+function handlePhoto(event) {
+
+
+  const file =
+    event.target.files[0];
+
+
+  if (!file) return;
+
+
+  const reader =
+    new FileReader();
+
+
+  reader.onload = function(e) {
+
+
+    const img = new Image();
+
+
+    img.onload = function() {
+
+
+      const canvas =
+        document.createElement("canvas");
+
+
+      const maxSize = 800;
+
+
+      let width = img.width;
+      let height = img.height;
+
+
+      if (width > height) {
+
+
+        if (width > maxSize) {
+          height *= maxSize / width;
+          width = maxSize;
+        }
+
+
+      } else {
+
+
+        if (height > maxSize) {
+          width *= maxSize / height;
+          height = maxSize;
+        }
+
+
+      }
+
+
+      canvas.width = width;
+      canvas.height = height;
+
+
+      const ctx =
+        canvas.getContext("2d");
+
+
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        width,
+        height
+      );
+
+
+      pendingPhoto =
+        canvas.toDataURL(
+          "image/jpeg",
+          0.65
+        );
+
+
+      document
+        .getElementById("previewImage")
+        .src = pendingPhoto;
+
+
+      document
+        .getElementById("photoPreview")
+        .classList.remove("hidden");
+
+
+    };
+
+
+    img.src = e.target.result;
+
+
+  };
+
+
+  reader.readAsDataURL(file);
+}
+
+
+
+
+/* =========================================================
+   WALLET — EXPENSE
+========================================================= */
+
+
+function getExpenses() {
+
+
+  try {
+
+
+    return JSON.parse(
+      localStorage.getItem(
+        STORAGE.expenses
+      ) || "[]"
+    );
+
+
+  } catch {
+
+
+    return [];
+  }
+}
+
+
+
+
+function saveExpenses(expenses) {
+
+
+  localStorage.setItem(
+    STORAGE.expenses,
+    JSON.stringify(expenses)
+  );
+}
+
+
+
+
+function addExpense() {
+
+
+  const name =
+    document
+      .getElementById("expenseName")
+      .value
+      .trim();
+
+
+  const amount =
+    Number(
+      document
+        .getElementById("expenseAmount")
+        .value
+    );
+
+
+  if (!name) {
+    showToast("請輸入品項");
+    return;
+  }
+
+
+  if (!amount || amount <= 0) {
+    showToast("請輸入日幣金額");
+    return;
+  }
+
+
+  const rate =
+    Number(
+      document.getElementById("rateInput").value
+    );
+
+
+  const expenses =
+    getExpenses();
+
+
+  expenses.unshift({
+    id: Date.now(),
+    name,
+    amount,
+    twd: Math.round(amount * rate),
+    photo: pendingPhoto,
+    date: new Date().toLocaleString("zh-TW")
+  });
+
+
+  saveExpenses(expenses);
+
+
+  document.getElementById("expenseName").value = "";
+  document.getElementById("expenseAmount").value = "";
+
+
+  pendingPhoto = null;
+
+
+  document
+    .getElementById("photoPreview")
+    .classList.add("hidden");
+
+
+  document.getElementById("expensePhoto").value = "";
+
+
+  renderExpenses();
+
+
+  showToast("已加入記帳");
+
+
+}
+
+
+
+
+function deleteExpense(id) {
+
+
+  const expenses =
+    getExpenses().filter(
+      item => item.id !== id
+    );
+
+
+  saveExpenses(expenses);
+
+
+  renderExpenses();
+
+
+  showToast("已刪除");
+
+
+}
+
+
+
+
+function clearExpenses() {
+
+
+  if (!confirm("確定要清空所有旅行記帳嗎？")) {
+    return;
+  }
+
+
+  localStorage.removeItem(
+    STORAGE.expenses
+  );
+
+
+  renderExpenses();
+
+
+  showToast("已清空記帳");
+
+
+}
+
+
+
+
+function renderExpenses() {
+
+
+  const expenses =
+    getExpenses();
+
+
+  const rate =
+    Number(
+      document.getElementById("rateInput").value
+    ) || 0.21;
+
+
+  const totalJPY =
+    expenses.reduce(
+      (sum, item) => sum + Number(item.amount),
+      0
+    );
+
+
+  const totalTWD =
+    Math.round(totalJPY * rate);
+
+
+  document.getElementById("expenseTotal").innerHTML = `
+    <div class="text-xs text-[#8a8177]">
+      累計花費
+    </div>
+
+
+    <div class="flex items-end justify-between mt-1">
+
+
+      <div>
+        <span class="text-xl font-bold">
+          ¥${totalJPY.toLocaleString()}
+        </span>
+
+
+        <span class="text-sm text-[#7c746b]">
+          JPY
+        </span>
+      </div>
+
+
+      <div class="text-sm text-[#7A8471]">
+        約 NT$ ${totalTWD.toLocaleString()}
+      </div>
+
+
+    </div>
+  `;
+
+
+
+
+  const list =
+    document.getElementById("expenseList");
+
+
+  if (!expenses.length) {
+
+
+    list.innerHTML = `
+      <div class="text-center py-8 text-sm text-[#999187]">
+        <i class="fa-regular fa-folder-open text-2xl mb-2"></i>
+        <div>目前還沒有記帳</div>
+      </div>
+    `;
+
+
+    return;
+  }
+
+
+
+
+  list.innerHTML =
+    expenses.map(item => `
+
+
+      <div class="flex gap-3 items-center">
+
+
+        ${
+          item.photo
+          ?
+          `<img
+            src="${item.photo}"
+            class="photo-thumb"
+          >`
+          :
+          `<div class="photo-thumb flex items-center justify-center bg-[#F4F1EA]">
+            <i class="fa-solid fa-receipt text-[#aaa095]"></i>
+          </div>`
+        }
+
+
+        <div class="flex-1 min-w-0">
+
+
+          <div class="font-medium truncate">
+            ${escapeHTML(item.name)}
+          </div>
+
+
+          <div class="text-xs text-[#8b8378] mt-1">
+            ${item.date}
+          </div>
+
+
+          <div class="text-sm mt-1">
+            ¥${Number(item.amount).toLocaleString()}
+            <span class="text-[#7A8471]">
+              ≈ NT$${Math.round(item.amount * rate).toLocaleString()}
+            </span>
+          </div>
+
+
+        </div>
+
+
+        <button
+          onclick="deleteExpense(${item.id})"
+          class="w-8 h-8 rounded-full text-[#A65D57]"
+        >
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+
+
+      </div>
+
+
+    `).join("");
+}
+
+
+
+
+/* =========================================================
+   CHECKLIST
+========================================================= */
+
+
+function getChecks() {
+
+
+  try {
+
+
+    return JSON.parse(
+      localStorage.getItem(
+        STORAGE.checks
+      ) || "{}"
+    );
+
+
+  } catch {
+
+
+    return {};
+  }
+}
+
+
+
+
+function renderChecklist() {
+
+
+  const checks =
+    getChecks();
+
+
+  const container =
+    document.getElementById("checklist");
+
+
+  container.innerHTML =
+    checklistItems.map((item, index) => `
+
+
+      <label
+        class="check-row flex items-center gap-3 p-3 rounded-xl bg-[#F4F1EA] cursor-pointer"
+      >
+
+
+        <input
+          type="checkbox"
+          ${checks[index] ? "checked" : ""}
+          onchange="toggleCheck(${index}, this.checked)"
+          class="w-5 h-5"
+        >
+
+
+        <span
+          class="text-sm ${checks[index] ? "line-through text-[#aaa096]" : ""}"
+          id="check-text-${index}"
+        >
+          ${item}
+        </span>
+
+
+      </label>
+
+
+    `).join("");
+
+
+  updateCheckProgress();
+}
+
+
+
+
+function toggleCheck(index, checked) {
+
+
+  const checks =
+    getChecks();
+
+
+  checks[index] = checked;
+
+
+  localStorage.setItem(
+    STORAGE.checks,
+    JSON.stringify(checks)
+  );
+
+
+  const text =
+    document.getElementById(
+      "check-text-" + index
+    );
+
+
+  if (checked) {
+
+
+    text.classList.add(
+      "line-through",
+      "text-[#aaa096]"
+    );
+
+
+  } else {
+
+
+    text.classList.remove(
+      "line-through",
+      "text-[#aaa096]"
+    );
+
+
+  }
+
+
+  updateCheckProgress();
+
+
+}
+
+
+
+
+function updateCheckProgress() {
+
+
+  const checks =
+    getChecks();
+
+
+  const completed =
+    checklistItems.filter(
+      (_, i) => checks[i]
+    ).length;
+
+
+  document.getElementById(
+    "checkProgress"
+  ).textContent =
+    `${completed} / ${checklistItems.length}`;
+}
+
+
+
+
+/* =========================================================
+   MEMO
+========================================================= */
+
+
+function getMemos() {
+
+
+  try {
+
+
+    return JSON.parse(
+      localStorage.getItem(
+        STORAGE.memos
+      ) || "[]"
+    );
+
+
+  } catch {
+
+
+    return [];
+  }
+}
+
+
+
+
+function saveMemo() {
+
+
+  const input =
+    document
+      .getElementById("memoInput")
+      .value
+      .trim();
+
+
+  if (!input) {
+    showToast("請先輸入內容");
+    return;
+  }
+
+
+  const memos =
+    getMemos();
+
+
+  memos.unshift({
+    id: Date.now(),
+    text: input,
+    date: new Date().toLocaleString("zh-TW")
+  });
+
+
+  localStorage.setItem(
+    STORAGE.memos,
+    JSON.stringify(memos)
+  );
+
+
+  document.getElementById("memoInput").value = "";
+
+
+  renderMemos();
+
+
+  showToast("備忘錄已儲存");
+}
+
+
+
+
+function deleteMemo(id) {
+
+
+  const memos =
+    getMemos().filter(
+      memo => memo.id !== id
+    );
+
+
+  localStorage.setItem(
+    STORAGE.memos,
+    JSON.stringify(memos)
+  );
+
+
+  renderMemos();
+
+
+}
+
+
+
+
+function linkifyText(text) {
+
+
+  const escaped =
+    escapeHTML(text);
+
+
+  const urlRegex =
+    /(https?:\/\/[^\s]+)/g;
+
+
+  return escaped.replace(
+    urlRegex,
+    url => `
+      <a
+        href="${url}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center mt-2 px-3 py-2 rounded-lg bg-[#E8E1D5] text-[#665C50] text-xs"
+      >
+        <i class="fa-solid fa-link mr-1"></i>
+        開啟連結
+      </a>
+    `
+  );
+}
+
+
+
+
+function renderMemos() {
+
+
+  const memos =
+    getMemos();
+
+
+  const container =
+    document.getElementById("memoList");
+
+
+  if (!memos.length) {
+
+
+    container.innerHTML = `
+      <div class="text-center text-sm text-[#999187] py-5">
+        還沒有備忘錄
+      </div>
+    `;
+
+
+    return;
+  }
+
+
+
+
+  container.innerHTML =
+    memos.map(memo => `
+
+
+      <div class="p-4 rounded-xl bg-[#F4F1EA]">
+
+
+        <div class="flex justify-between gap-3">
+
+
+          <div
+            class="text-sm whitespace-pre-wrap leading-6 flex-1"
+          >
+            ${linkifyText(memo.text)}
+          </div>
+
+
+          <button
+            onclick="deleteMemo(${memo.id})"
+            class="text-[#A65D57] flex-shrink-0"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+
+        </div>
+
+
+        <div class="text-[10px] text-[#aaa095] mt-3">
+          ${memo.date}
+        </div>
+
+
+      </div>
+
+
+    `).join("");
+}
+
+
+
+
+/* =========================================================
+   UTILITIES
+========================================================= */
+
+
+function escapeHTML(str) {
+
+
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+
+
+function showToast(message) {
+
+
+  const toast =
+    document.getElementById("toast");
+
+
+  document.getElementById(
+    "toastText"
+  ).textContent = message;
+
+
+  toast.classList.add("show");
+
+
+  clearTimeout(window.toastTimer);
+
+
+  window.toastTimer =
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 1800);
+}
+
+
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+
+    renderDayButtons();
+    renderTimeline();
+
+
+    renderGuides();
+
+
+    loadRate();
+    renderExpenses();
+
+
+    renderChecklist();
+    renderMemos();
+
+
+  }
+);
+
+
+</script>
+
+
+</body>
+</html>
